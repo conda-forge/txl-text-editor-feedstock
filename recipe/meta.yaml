@@ -1,3 +1,4 @@
+{% set python_min = '3.10' %}
 {% set name = "txl-text-editor" %}
 {% set version = "0.2.14" %}
 
@@ -6,21 +7,21 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/txl_text_editor-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/txl_text_editor-{{ version }}.tar.gz
   sha256: 9a4516a0803e35d9eb74eefc5efd43a94a03e51f9804058da9c6b4558994ceed
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
 
 requirements:
   host:
-    - python >=3.10
+    - python {{ python_min }}
     - pip
     - hatchling
   run:
-    - python >=3.10
+    - python >={{ python_min }}
     - txl >=0.2.18,<0.3.0
 
 test:
@@ -30,6 +31,8 @@ test:
   #   - pip
   # commands:
   #   - pip check
+  requires:
+    - python {{ python_min }}
   imports:
     - txl_text_editor
 
