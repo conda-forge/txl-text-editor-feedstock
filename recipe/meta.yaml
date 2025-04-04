@@ -1,6 +1,6 @@
-{% set python_min = '3.10' %}
+{% set python_min = "3.10" %}
 {% set name = "txl-text-editor" %}
-{% set version = "0.2.14" %}
+{% set version = "0.3.3" %}
 
 package:
   name: {{ name|lower }}
@@ -8,11 +8,11 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/txl_text_editor-{{ version }}.tar.gz
-  sha256: 9a4516a0803e35d9eb74eefc5efd43a94a03e51f9804058da9c6b4558994ceed
+  sha256: 6c7011f7a40e582d686ab53e02da3eb0ba1a353fb2e8b6973c10ddc029b2b58b
 
 build:
   noarch: python
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
 
 requirements:
